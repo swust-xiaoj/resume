@@ -122,23 +122,23 @@ export default {
         lastName: 'xiao',
         age: '1'
       }
-    }
+    };
   },
   created () { // 实例被创建后调用
-    console.log(`ok this is ${this.msg}`)
+    console.log(`ok this is ${this.msg}`);
   },
   mounted () {},
   updated () {},
   destroyed () {},
   methods: {
     changeData: function (event) {
-      this.msg = this.msg.split('').reverse().join('')
-      this.isReverse = !this.isReverse
-      this.ifStatus = this.ifStatus % 3 + 1
-      this.inputType = this.inputType === 'name' ? 'email' : 'name'
+      this.msg = this.msg.split('').reverse().join('');
+      this.isReverse = !this.isReverse;
+      this.ifStatus = this.ifStatus % 3 + 1;
+      this.inputType = this.inputType === 'name' ? 'email' : 'name';
       if (event) {
-        event.preventDefault()
-        alert(event.target.tagName + ' clicked')
+        event.preventDefault();
+        alert(event.target.tagName + ' clicked');
       }
     }
   },
@@ -163,7 +163,7 @@ export default {
     //   运行text时，setter会被调用，响应的值也会被更新
     // },
     reverseMessage: function () {
-      return this.msg.split('').reverse().join('')
+      return this.msg.split('').reverse().join('');
     }
   },
   // 观察和响应vue实例上的数据变动。有一些数据需要随着其他数据变动而变动，而更好的方法是用computed
@@ -175,7 +175,7 @@ export default {
     // }
   }
   // https://cn.vuejs.org/v2/guide/components.html#Prop
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

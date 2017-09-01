@@ -3,9 +3,9 @@
       <section class="menu">
           <menus></menus>
       </section>
-      <seciton class="content-container">
+      <section class="content-container">
           <todo></todo>
-      </seciton>
+      </section>
   </section>
 </template>
 

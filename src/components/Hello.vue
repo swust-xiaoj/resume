@@ -9,11 +9,12 @@
     <!-- v-bind:class="[activeClass, errorClass]" // data: {activeClass: 'active', errorClass: 'text-danger'} ==> class="active text-danger" -->
     <!-- 三元表达式： v-bind:class="[isActive ? activeClass : '', errorClass]" -->
     <h2 class='text-center' :class="[isReverse ? 'reserved' : '']">{{ msg }}</h2>
-      <!-- v-for -->
+    <!-- v-for -->
     <ol>
       <!-- v-bind 简写 : -->
       <!-- 基本用法 -->
-      <li v-for='(todo, index) in todos' v-bind:key='index'><!-- or todo of todos -->
+      <li v-for='(todo, index) in todos' v-bind:key='index'>
+        <!-- or todo of todos -->
         {{todo.text}}
       </li>
     </ol>
@@ -74,17 +75,23 @@
     <!-- 表单 -->
     <p>多选框</p>
     <!-- 绑定到同一个数组checkedNames -->
-      <input type="checkbox" id='name1' value='jie' v-model="checkedNames">
-      <label for="name1">jie</label>
-      <input type="checkbox" id='name2' value='ying' v-model="checkedNames">
-      <label for="name2">ying</label>
-      <input type="checkbox" id='name3' value='huan' v-model="checkedNames">
-      <label for="name3">huan</label>
-      <p>checked names: {{checkedNames}}</p>
+    <input type="checkbox" id='name1' value='jie' v-model="checkedNames">
+    <label for="name1">jie</label>
+    <input type="checkbox" id='name2' value='ying' v-model="checkedNames">
+    <label for="name2">ying</label>
+    <input type="checkbox" id='name3' value='huan' v-model="checkedNames">
+    <label for="name3">huan</label>
+    <!-- 绑定默认value到实例的动态属性上，这个属性的值可以不为字符串，可以为一个变量 -->
+    <input type="checkbox" v-model="togglevalue" :false-value='321' :true-value='123'>
+    <p>checked names: {{checkedNames}}, togglevalue is {{togglevalue}}</p>
     <p>单选</p>
     <p>
-      <input type="radio" value ='One' v-model="picked"><label>one</label>
-      <input type="radio" value ='Two' v-model="picked"><label>two</label></br>
+      <input type="radio" value='One' :value='object.firstName' v-model="picked">
+      <label>one</label>
+      <!-- v-bind属性的value高于非绑定的 -->
+      <input type="radio" value='Two' :value='object.lastName' v-model="picked">
+      <label>two</label>
+      </br>
       <span>picked: {{picked}}</span>
     </p>
     <p>选择列表</p>
@@ -94,6 +101,10 @@
       <option>C</option>
     </select>
     <p>selected : {{selected}}</p>
+    <!-- 修饰符 -->
+    <!-- v-model.lazy='xxx' -->
+    <!-- v-model.number='xxx' -->
+    <!-- v-model.trim='xxx' -->
   </main>
 </template>
 
@@ -101,9 +112,10 @@
 // import axios from axios;
 export default {
   name: 'hello',
-  data () {
+  data() {
     return {
       msg: 'Welcome xiaojie',
+      togglevalue: '321',
       msgColor: 'red',
       fontSize: 20,
       isReverse: !!0,
@@ -124,27 +136,27 @@ export default {
       }
     };
   },
-  created () { // 实例被创建后调用
+  created() { // 实例被创建后调用
     console.log(`ok this is ${this.msg}`);
   },
-  mounted () {},
-  updated () {},
-  destroyed () {},
+  mounted() { },
+  updated() { },
+  destroyed() { },
   methods: {
-    changeData: function (event) {
+    changeData: function(event) {
       this.msg = this.msg.split('').reverse().join('');
       this.isReverse = !this.isReverse;
       this.ifStatus = this.ifStatus % 3 + 1;
       this.inputType = this.inputType === 'name' ? 'email' : 'name';
       if (event) {
         event.preventDefault();
-        alert(event.target.tagName + ' clicked');
+        console.log(event.target.tagName + ' clicked');
       }
     }
   },
   // 过滤器
   filters: {
-    xxx: function () {}
+    xxx: function() { }
   },
   // 计算属性 vs methods：计算属性是基于它们的依赖进行缓存的，只有在相关依赖发生改变才会重新求值
   // 相比而言，只要发生重新渲染，methods调用总会执行该函数
@@ -162,7 +174,7 @@ export default {
     //   }
     //   运行text时，setter会被调用，响应的值也会被更新
     // },
-    reverseMessage: function () {
+    reverseMessage: function() {
       return this.msg.split('').reverse().join('');
     }
   },

@@ -1,0 +1,26 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "personal resume",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swust-xiaoj/resume.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swust-xiaoj/resume/issues"
+  },
+  "homepage": "https://github.com/swust-xiaoj/resume#readme",
+  "dependencies": {
+    "html-pdf": "^2.2.0",
+    "markdown-styles": "^3.1.10",
+    "marked": "^0.3.6"
+  }
+}

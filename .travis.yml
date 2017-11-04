@@ -1,0 +1,18 @@
+language: node_js
+node_js: stable
+branches:
+  only:
+  - master
+install:
+  - npm install
+script:
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $resume
+  # local_dir: dist
+  name: swust-xiaoj
+  email: swustxiaojie@163.com
+  on:
+    branch: master

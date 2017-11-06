@@ -11,7 +11,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $resume
-  # local_dir: dist
+  local_dir: dist
   name: swust-xiaoj
   email: swustxiaojie@163.com
   on:
